@@ -6,17 +6,12 @@ using System.Threading.Tasks;
 
 namespace OCP_Examples
 {
-   public class Hello
+   public class Hello1
     {
-        IHello _hello;
-        public Hello(IHello hello)
+       
+        public virtual string Say()
         {
-            _hello = hello;
-        }
-
-        public string Say()
-        {
-           return _hello.Say();
+            return "";
         }
 
         //class Hello
