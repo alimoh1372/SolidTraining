@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using OCP_Examples.LSP;
 using OCP_Examples.ISP;
+using OCP_Examples.DIP;
 
 namespace OCP_Examples
 {
@@ -111,6 +112,30 @@ namespace OCP_Examples
             Dialer dialer = new Dialer();
             dialer.MakeCall(contact);
             dialer.MakeCall(engineer);
+
+            Console.WriteLine("======================================================================");
+
+            DIP.Customer customer1 = new DIP.Customer(new DIP.EmailLogger());
+            customer1.Add();
+            Console.WriteLine("======================================================================");
+            ITransferDestination destination = new BankAccount
+            {
+                AccountNumber = "123912938aadda",
+                Balance = 124408
+            };
+
+            ITransferSource source = new BankAccount
+            {
+                AccountNumber = "341342kjfaksd",
+                Balance = 100
+            };
+
+            TransferManager transferManager = new TransferManager(source, destination);
+            transferManager.value = 4200;
+            transferManager.Transfer();
+
+
+
             Console.ReadKey();
         }
     }
